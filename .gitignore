@@ -1,0 +1,17 @@
+.env
+.env.*
+!.env.example
+node_modules/
+.next/
+
+# next
+/out/
+/build
+*.tsbuildinfo
+next-env.d.ts
+.vercel
+.DS_Store
+/coverage
+
+# Raw recorded YouCam responses (contain signed URLs)
+/fixtures/skin-sample.json

@@ -1,0 +1,19 @@
+{
+ "recorded": "2026-11-02",
+ "color": {
+  "eye_color": "#342623",
+  "eye_color_name": "Brown",
+  "lip_color": "#be8782",
+  "eyebrow_color": "#805d47",
+  "skin_color": "#bc9c87",
+  "hair_color": "#B56637",
+  "hair_color_name": "Auburn"
+ },
+ "face_quality": {
+  "has_face": true,
+  "area": "good",
+  "frontal": "good",
+  "lighting": "good",
+  "faceangle": "good"
+ }
+}

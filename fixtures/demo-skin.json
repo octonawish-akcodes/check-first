@@ -1,0 +1,86 @@
+{
+ "recorded": "2026-11-01",
+ "source": "YouCam Skin Analysis v2.1 SD, live call on YouCam sample_Image_1",
+ "output": [
+  {
+   "ui_score": 97,
+   "raw_score": 98.70181238651276,
+   "type": "pore",
+   "url": null
+  },
+  {
+   "ui_score": 94,
+   "raw_score": 96.19703674316406,
+   "type": "redness",
+   "url": null
+  },
+  {
+   "ui_score": 97,
+   "raw_score": 98.7389907836914,
+   "type": "age_spot",
+   "url": null
+  },
+  {
+   "ui_score": 98,
+   "raw_score": 99.51248931884766,
+   "type": "oiliness",
+   "url": null
+  },
+  {
+   "ui_score": 98,
+   "raw_score": 99.4078278541565,
+   "type": "texture",
+   "url": null
+  },
+  {
+   "ui_score": 94,
+   "raw_score": 96.21409773826599,
+   "type": "radiance",
+   "url": null
+  },
+  {
+   "ui_score": 96,
+   "raw_score": 97.86391,
+   "type": "acne",
+   "url": null
+  },
+  {
+   "ui_score": 82,
+   "raw_score": 80.68523406982422,
+   "type": "moisture",
+   "url": null
+  },
+  {
+   "type": "skin_type",
+   "region": "whole",
+   "skin_type": "Normal",
+   "url": null
+  },
+  {
+   "type": "skin_type",
+   "region": "t_zone",
+   "skin_type": "Normal",
+   "url": null
+  },
+  {
+   "type": "skin_type",
+   "region": "u_zone",
+   "skin_type": "Normal",
+   "url": null
+  },
+  {
+   "score": 94.5,
+   "type": "all",
+   "url": null
+  },
+  {
+   "score": 28,
+   "type": "skin_age",
+   "url": null
+  },
+  {
+   "type": "resize_image",
+   "url": null
+  }
+ ]
+}

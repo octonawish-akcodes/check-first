@@ -1,0 +1,257 @@
+@import "tailwindcss";
+
+/* A chemist's counter: carton white, label ink, the red of a prescription-only warning. */
+:root {
+  --paper: #fff8f4;
+  --counter: #fbefe9;
+  --rose: #fde4e2;
+  --amber: #fdefc6;
+  --mint: #dcefe3;
+  --card: #ffffff;
+  --ink: #142030;
+  --muted: #525d68;
+  --line: #ead9d2;
+  --rx: #c81e2c;
+  --rx-soft: #fcebec;
+  --ok: #17694a;
+  --ok-soft: #e3f1e8;
+  --warn: #8a5600;
+  --warn-soft: #fbf1dc;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-counter: var(--counter);
+  --color-rose: var(--rose);
+  --color-amber: var(--amber);
+  --color-mint: var(--mint);
+  --color-card: var(--card);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-rx: var(--rx);
+  --color-rx-soft: var(--rx-soft);
+  --color-ok: var(--ok);
+  --color-ok-soft: var(--ok-soft);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --font-sans: var(--font-hind), var(--font-anek-deva), system-ui, sans-serif;
+  --font-display: var(--font-anek), var(--font-anek-deva), system-ui, sans-serif;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+/* Headlines set narrow, like the type printed on a carton. */
+.font-display {
+  font-stretch: 86%;
+  letter-spacing: -0.01em;
+}
+
+:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 2px;
+}
+
+/* The matched word on a label, circled the way a pharmacist would. */
+mark.hit {
+  background: transparent;
+  color: var(--rx);
+  font-weight: 700;
+  border: 2px solid var(--rx);
+  border-radius: 999px;
+  padding: 0 0.3em;
+}
+mark.maybe {
+  background: var(--warn-soft);
+  color: var(--warn);
+  font-weight: 700;
+  border-bottom: 2px dashed var(--warn);
+}
+
+/* The step rail: one line running down the left of the flow, a numbered dot per step. */
+.rail-step {
+  position: relative;
+  display: grid;
+  grid-template-columns: 2.25rem minmax(0, 1fr);
+  column-gap: 0.75rem;
+}
+.rail-step::before {
+  content: "";
+  position: absolute;
+  left: calc(1.125rem - 1px);
+  top: 2.5rem;
+  bottom: -1.25rem;
+  width: 2px;
+  background: var(--line);
+}
+.rail-step:last-child::before {
+  display: none;
+}
+@media (min-width: 640px) {
+  .rail-step {
+    grid-template-columns: 2.75rem minmax(0, 1fr);
+    column-gap: 1.25rem;
+  }
+  .rail-step::before {
+    left: calc(1.375rem - 1px);
+    top: 3rem;
+  }
+}
+
+/* The doctor card as a slip off a prescription pad: a red margin rule down the left. */
+.rx-pad {
+  background: linear-gradient(to right, transparent 0 0.9rem, var(--rx) 0.9rem calc(0.9rem + 2px), transparent calc(0.9rem + 2px)) var(--card);
+}
+
+.carton-circle {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.title-circle {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+
+/* The scan line only shows while it moves. */
+.hero-scan {
+  display: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-scan {
+    display: block;
+  }
+  /* Hero: each piece rises in on load, in the order set by its animation-delay. */
+  .hero-in {
+    animation: hero-in 700ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+  @keyframes hero-in {
+    from {
+      opacity: 0;
+      transform: translateY(28px);
+    }
+  }
+  /* The pen circles the word in the headline after it lands. */
+  .title-circle {
+    stroke-dashoffset: 1;
+    animation: circle 900ms 900ms cubic-bezier(0.6, 0, 0.3, 1) forwards;
+  }
+  /* Floating cards drift a few pixels, out of step with each other. */
+  .float-a {
+    animation: float 6s ease-in-out infinite alternate;
+  }
+  .float-b {
+    animation: float 7s 1.2s ease-in-out infinite alternate-reverse;
+  }
+  @keyframes float {
+    to {
+      translate: 0 -10px;
+    }
+  }
+  /* Sections fade up once as they scroll into view. */
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(32px);
+    transition:
+      opacity 700ms cubic-bezier(0.2, 0.8, 0.2, 1),
+      transform 700ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  [data-reveal][data-in] {
+    opacity: 1;
+    transform: none;
+  }
+
+  .appear {
+    animation: appear 260ms ease-out;
+  }
+  @keyframes appear {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+  }
+
+  /* The one staged moment: the pen circles the steroid, then the Rx stamp lands. */
+  .carton-circle {
+    stroke-dashoffset: 1;
+    animation: circle 900ms 500ms cubic-bezier(0.6, 0, 0.3, 1) forwards;
+  }
+  @keyframes circle {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+  .carton-stamp {
+    opacity: 0;
+    animation: stamp 260ms 1450ms cubic-bezier(0.2, 1.6, 0.4, 1) forwards;
+  }
+  @keyframes stamp {
+    from {
+      opacity: 0;
+      transform: rotate(8deg) scale(1.6);
+    }
+    to {
+      opacity: 1;
+      transform: rotate(8deg) scale(1);
+    }
+  }
+
+  /* The hero scan passes over the face twice, then rests. */
+  .hero-scan {
+    opacity: 0;
+    animation: hero-scan 1.4s 300ms ease-in-out 2 alternate;
+  }
+  @keyframes hero-scan {
+    from {
+      top: 2%;
+      opacity: 1;
+    }
+    to {
+      top: 96%;
+      opacity: 1;
+    }
+  }
+
+  .scan-line {
+    animation: scan 1.6s ease-in-out infinite alternate;
+  }
+  @keyframes scan {
+    from {
+      top: 4%;
+    }
+    to {
+      top: 92%;
+    }
+  }
+}
+
+.print-only {
+  display: none;
+}
+
+@media print {
+  body {
+    background: white;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+  .rail-step {
+    display: block;
+  }
+  .rail-step::before,
+  .rail-dot {
+    display: none;
+  }
+}
